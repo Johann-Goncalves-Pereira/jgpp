@@ -1,11 +1,16 @@
 body {
 	display: grid;
+	grid-template-rows: 1fr auto;
 	grid-template-columns: repeat(14, 1fr);
-	gap: var(--grid-gutter);
+	gap: var(--space-2xs);
 
 	margin-inline: auto;
+	box-shadow: 0 0 0 1rem var(--surface-200);
+	border: 1px solid var(--surface-200);
+
+	border-radius: 1rem;
 	background-color: var(--surface-100);
-	padding-inline: var(--grid-gutter);
+	padding: var(--space-2xs);
 
 	width: min(var(--grid-max-width), 100dvw);
 	height: 100dvh;
@@ -21,4 +26,21 @@ body {
 		Calibri,
 		source-sans-pro,
 		sans-serif;
+
+	> header {
+		grid-row: 1 / span 2;
+		grid-column: 1 / 4;
+	}
+
+	.main,
+	> footer {
+		grid-column: 4/15;
+	}
+
+	> header,
+	.main,
+	footer {
+		border: 1px solid var(--surface-200);
+		border-radius: 0.75rem;
+	}
 }

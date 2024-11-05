@@ -54,13 +54,14 @@ export const NoiseHtmlString = ({
 export const backgroundNoise = $(async (window: Window, document: Document) => {
 	const root = document.documentElement
 	const customProperty =
-		getComputedStyle(root).getPropertyValue('--surface-150')
+		getComputedStyle(root).getPropertyValue('--surface-200')
 
 	const buildSvg = (bf: IntRange<50, 90>) =>
 		`url('data:image/svg+xml;base64,${window.btoa(
 			NoiseHtmlString({
 				color: customProperty,
 				baseFrequency: bf,
+				opacity: 75,
 			}),
 		)}')`
 
@@ -69,9 +70,14 @@ export const backgroundNoise = $(async (window: Window, document: Document) => {
 	const svg3 = buildSvg(75)
 
 	return `
-			.background-noise {
-				animation: alternate-background-noise 200ms infinite;
+			@media (prefers-reduced-motion: no-preference) {
+				.background-noise {
+						background-repeat: repeat;
+						background-size: 15rem;
+						animation: alternate-background-noise 200ms infinite;
+					}
 			}
+			
 			@keyframes alternate-background-noise {
 				0% {
 					background-image: ${svg1};

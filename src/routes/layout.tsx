@@ -28,7 +28,7 @@ export default component$(() => {
 	return (
 		<>
 			<Header />
-			<main class={styles.main}>
+			<main class={`${styles.main} background-noise`}>
 				<Slot />
 			</main>
 			<Footer />
